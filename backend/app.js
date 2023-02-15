@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const helmet = require('helmet');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 
@@ -12,23 +13,9 @@ const userRoutes = require('./routes/user');
 //Crée une application express
 const app = express();
 
-app.use(morgan('combined'));
-
 //Connexion à notre BDD
 mongoose
-  .connect(
-    'mongodb+srv://' +
-      process.env.DB_USERNAME +
-      ':' +
-      process.env.DB_PASSWORD +
-      '@clusteralycia.he6mvun.mongodb.net/' +
-      process.env.DB_NAME +
-      '?retryWrites=true&w=majority',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.DB_DATABASE)
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
@@ -46,13 +33,19 @@ app.use((req, res, next) => {
   next();
 });
 
+//Morgan pour les logs des requêtes HTTP
+app.use(morgan('combined'));
+
 //Parser les réponses en JSON
 app.use(express.json());
 
 //Les différentes routes
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Helmet sécurisation des headers
+app.use(helmet());
 
 //Exportation de app.js pour accéder dans un autre fichier
 module.exports = app;
