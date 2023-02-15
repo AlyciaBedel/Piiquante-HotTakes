@@ -24,19 +24,19 @@ Piiquante se dédie à la création de sauces épicées dont les recettes sont g
 
 ## Librairies utilisées
 
-Bcrypt : version 5.1.0.
-Cors : version 2.8.5.
-Crypto-js : version 4.1.1.
-Dotenv : version 16.0.3.
-Express : version 4.18.2.
-Helmet: version 6.0.1.
-Jsonwebtoken : version 9.0.0.
-Mongoose : version 6.9.1.
-Mongoose-unique-validator : version 3.1.0.
-Morgan : version 1.10.0.
-Multer : version 1.4.5-lts.1.
-Password-validator : version 5.3.0.
-Validator : version 13.9.0.
+- Bcrypt : version 5.1.0.
+- Cors : version 2.8.5.
+- Crypto-js : version 4.1.1.
+- Dotenv : version 16.0.3.
+- Express : version 4.18.2.
+- Helmet: version 6.0.1.
+- Jsonwebtoken : version 9.0.0.
+- Mongoose : version 6.9.1.
+- Mongoose-unique-validator : version 3.1.0.
+- Morgan : version 1.10.0.
+- Multer : version 1.4.5-lts.1.
+- Password-validator : version 5.3.0.
+- Validator : version 13.9.0.
 
 ## Exigences de sécurité
 
