@@ -1,19 +1,20 @@
+//Importation des modules
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-
 dotenv.config();
 
+//Importation des routes
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
 //Crée une application express
 const app = express();
 
-//Connexion à notre BDD
+//Connexion à la BDD de MongoDB
 mongoose
   .connect(process.env.DB_DATABASE)
   .then(() => console.log('Connexion à MongoDB réussie !'))

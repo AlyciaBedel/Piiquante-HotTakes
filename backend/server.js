@@ -1,9 +1,10 @@
+//Importation des modules
 const http = require('http');
 const app = require('./app');
 const dotenv = require('dotenv');
-
 dotenv.config();
 
+//Normalise le port en nombre ou en chaîne de caractères
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
 
@@ -15,9 +16,12 @@ const normalizePort = (val) => {
   }
   return false;
 };
+
+//Récupère le port sur lequel l'application va tourner
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+//Fonction qui gère les erreurs du serveur
 const errorHandler = (error) => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -48,6 +52,7 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
+//Lance le serveur en écoutant le port
 server.listen(process.env.PORT || 3000, () =>
   console.log(`Serveur ouvert sur le bon port : ${process.env.PORT}`)
 );

@@ -1,3 +1,4 @@
+//Importation du module
 const mongoose = require('mongoose');
 
 //Schéma de la BDD pour les sauces

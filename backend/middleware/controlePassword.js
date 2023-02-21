@@ -1,26 +1,27 @@
-//Import de password-validator
+// Importation du module
 const passwordValidator = require('password-validator');
 
-//Création du schéma
+//Création du schéma de validation de mot de passe
 const schema = new passwordValidator();
 
+//Schéma avec les règles de validation
 schema
   .is()
-  .min(8) // Minimum length 8
+  .min(8)
   .is()
-  .max(100) // Maximum length 100
+  .max(100)
   .has()
-  .uppercase() // Must have uppercase letters
+  .uppercase()
   .has()
-  .lowercase() // Must have lowercase letters
+  .lowercase()
   .has()
-  .digits(2) // Must have at least 2 digits
+  .digits(2)
   .has()
   .not()
-  .spaces() // Should not have spaces
+  .spaces()
   .is()
   .not()
-  .oneOf(['Passw0rd', 'Password123']); // Blacklist these values
+  .oneOf(['Passw0rd', 'Password123']);
 
 module.exports = (req, res, next) => {
   if (!schema.validate(req.body.password)) {
