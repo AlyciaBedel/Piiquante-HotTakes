@@ -50,4 +50,33 @@ Piiquante se dédie à la création de sauces épicées dont les recettes sont g
 
 ## Installation du projet
 
-À venir.
+`Node` `Nodemon` et `npm` doivent être installés localement sur votre machine.\
+Installez toutes les dépendances avec npm.
+
+Pour le répertoire `frontend` depuis le terminal :
+
+```terminal
+cd frontend
+npm install
+```
+
+Pour lancer le server frontend :
+
+```terminal
+npm start
+```
+
+Pour le répertoire `backend` depuis le terminal :
+
+```terminal
+cd backend
+npm install
+```
+
+Pour lancer le server backend :
+
+```terminal
+nodemon server
+```
+
+N'oubliez pas de compléter le fichier .env
