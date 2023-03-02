@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
   if (!schema.validate(req.body.password)) {
     res.writeHead(
       400,
-      'Le mot de passe doit comprendre 8 caractères dont un chiffre, sans espaces',
+      'Le mot de passe doit contenir 8 caractères minimum avec des majuscule, des miniscules, des chiffres sans espaces',
       {
         'content-type': 'application/json',
       }
