@@ -222,5 +222,5 @@ exports.likeSauce = (req, res, next) => {
           break;
       }
     })
-    .catch((error) => res.status(404).json({ error }));
+    .catch((error) => res.status(500).json({ error }));
 };

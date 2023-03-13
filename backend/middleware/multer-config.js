@@ -16,12 +16,12 @@ const storage = multer.diskStorage({
   },
   //Nom du fichier après téléchargement
   filename: (req, file, callback) => {
-    //Remplace les espaces dans le nom du fichier
-    const name = file.originalname.split(' ').join('_');
+    //Extraire le nom du fichier sans l'extension
+    const name = file.originalname.split('.')[0].split(' ').join('_');
     //Récupération de l'extension du fichier
     const extension = MIME_TYPES[file.mimetype];
     //Générer le nom final
-    callback(null, name + Date.now() + '.' + extension);
+    callback(null, name + '_' + Date.now() + '.' + extension);
   },
 });
 
