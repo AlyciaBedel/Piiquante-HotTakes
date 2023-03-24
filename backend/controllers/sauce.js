@@ -63,7 +63,16 @@ exports.modifySauce = (req, res, next) => {
           // Ajout de l'id de la sauce dans l'objet à mettre à jour
           { ...sauceObject, _id: req.params.id }
         )
-          .then(() => res.status(200).json({ message: 'Sauce modifié!' }))
+          .then(() => {
+            // Supprime l'ancienne image si elle existe
+            if (req.file && sauce.imageUrl) {
+              const filename = sauce.imageUrl.split('/images/')[1];
+              fs.unlink(`images/${filename}`, () => {
+                console.log(`Image supprimée: ${filename}`);
+              });
+            }
+            res.status(200).json({ message: 'Sauce modifié!' });
+          })
           .catch((error) => res.status(401).json({ error }));
       }
     })
